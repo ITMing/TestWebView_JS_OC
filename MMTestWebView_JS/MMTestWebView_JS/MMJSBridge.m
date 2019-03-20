@@ -35,6 +35,12 @@
     __unsafe_unretained MMJSBridge *weakSelf = bridge; //详解见备注1
     weakSelf.jsContext = context;
     context[@"mmzhao"] = weakSelf; //注入mmzhao对象
+    
+    /**
+     * 如果不实现<MMJSExport>协议，测试可以使用contextg获取js的mmzhao对象的callCamera方法，点击回调操作可用block进行回调
+     * 如果实现<MMJSExport>协议，测试必须实现协议中的方法，js才能够调用oc的代码
+     * 注意：方法一定定好，不能出错，方便多端交互使用
+     */
     context[@"mmzhao"][@"callCamera"] = ^{
         [weakSelf callCamera];
     };
@@ -44,6 +50,9 @@
     };
 }
 
+/**
+ *  @brief 清空jsContext  注意：容易不释放jsContext造成内存泄漏
+ */
 + (void)clearJsContext:(JSContext *)jsContext
 {
     if (jsContext) {
@@ -54,6 +63,7 @@
     }
 }
 
+#pragma mark - JSExport 协议中的方法
 //操作
 - (void)callCamera
 {
@@ -70,8 +80,6 @@
     JSValue *shareCallback = self.jsContext[@"shareCallback"];
     [shareCallback callWithArguments:nil];
 }
-
-#pragma mark -
 
 
 @end
