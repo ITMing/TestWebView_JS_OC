@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+        <title>mmzhao测试JS-OC-JS</title>
+</head>
+<body>
+    <div style="margin-top: 100px">
+        <h1>OC-JS、JS-OC交互的那些事</h1>
+        <input type="button" value="CallCamera" onclick="mmzhao.callCamera()">
+    </div>       
+        
+    <div>
+        <input type="button" value="Share" onclick="callShare()">
+    </div>
+
+<script>
+    var callShare = function() {
+        var shareInfo = JSON.stringify({"title": "标题", "desc": "内容", "shareUrl": "http://www.baidu.com",
+        "shareIco":"https://github.com/"});
+        mmzhao.share(shareInfo);
+    }
+
+    var picCallback = function(photos) {
+        alert(photos);
+    }
+
+    var shareCallback = function(){
+        alert('oc->js分享成功回调');
+    }
+</script>
+</body>
+</html>
