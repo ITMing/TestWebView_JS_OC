@@ -42,11 +42,15 @@
      * 注意：方法一定定好，不能出错，方便多端交互使用
      */
     context[@"mmzhao"][@"callCamera"] = ^{
-        [weakSelf callCamera];
+        dispatch_async(dispatch_get_main_queue(), ^{ // js调用原生方法 操纵UI需要放在主线程中
+            [weakSelf callCamera];
+        });
     };
 
     context[@"mmzhao"][@"share"] = ^(JSValue *paramsValue) {
-        [weakSelf share:[paramsValue toString]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf share:[paramsValue toString]];
+        });
     };
 }
 
