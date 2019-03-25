@@ -41,15 +41,33 @@
      * 如果实现<MMJSExport>协议，测试必须实现协议中的方法，js才能够调用oc的代码
      * 注意：方法一定定好，不能出错，方便多端交互使用
      */
+    
+    
+    //如果调用的是aler操作，不可用dispatch_async(dispatch_get_main_queue(),会早仓竞争主线程卡死，用如下方法
     context[@"mmzhao"][@"callCamera"] = ^{
-        dispatch_async(dispatch_get_main_queue(), ^{ // js调用原生方法 操纵UI需要放在主线程中
-            [weakSelf callCamera];
-        });
+        [weakSelf performSelectorOnMainThread:@selector(callCamera) withObject:nil waitUntilDone:NO];
     };
-
+    
     context[@"mmzhao"][@"share"] = ^(JSValue *paramsValue) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf share:[paramsValue toString]];
+        [weakSelf performSelectorOnMainThread:@selector(share:) withObject:[paramsValue toString] waitUntilDone:NO];
+    };
+    
+//    context[@"mmzhao"][@"callCamera"] = ^{
+//        dispatch_async(dispatch_get_main_queue(), ^{ // js调用原生方法 操纵UI需要放在主线程中
+//            [weakSelf callCamera];
+//        });
+//    };
+
+//    context[@"mmzhao"][@"share"] = ^(JSValue *paramsValue) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [weakSelf share:[paramsValue toString]];
+//        });
+//    };
+    
+    
+    context[@"mmzhao"][@"outPutValue"] = ^(JSValue *funValue,JSValue *paramValue) {
+        dispatch_async(dispatch_get_main_queue(), ^{ // js调用原生方法 操纵UI需要放在主线程中
+            [weakSelf jsCallNativeValue:[funValue toInt32] paramString:[paramValue toString]];
         });
     };
 }
@@ -85,5 +103,37 @@
     [shareCallback callWithArguments:nil];
 }
 
+#pragma mark - outPutBridgeValue
+- (void)jsCallNativeValue:(NSInteger)funValue paramString:(NSString *)paramString
+{
+    if (paramString) {
+        NSData *data = [paramString dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *error;
+        NSDictionary *params = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        if (!error) {
+            [self callNative:funValue params:params];
+        } else {
+            [self callNative:funValue params:nil];
+        }
+    } else {
+        [self callNative:funValue params:nil];
+    }
+}
+
+- (void)callNative:(NSInteger)funValue params:(NSDictionary *)params
+{
+    switch (funValue) {
+        case 2019:
+        {
+            if (params) {
+                NSLog(@"\n\n###########: %@\n\n",params[@"desc"]);
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
 
 @end

@@ -35,11 +35,15 @@
     [self reloadRequest];
 }
 
+- (void)setUrl:(NSURL *)url
+{
+    _url = url;
+}
+
 #pragma mark - reload WebView
 - (void)reloadRequest
 {
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html"];
-    [self.webView loadRequest:[[NSURLRequest alloc] initWithURL:url]];
+    [self.webView loadRequest:[[NSURLRequest alloc] initWithURL:_url]];
 }
 
 #pragma mark - UIWebViewDelegate
@@ -76,8 +80,13 @@
 - (UIWebView *)webView
 {
     if (!_webView) {
-        _webView = [[UIWebView alloc] initWithFrame:self.view.frame];
+        _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
         _webView.delegate = self;
+        if (@available(iOS 11.0, *)) {
+            _webView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame),[UIScreen mainScreen].bounds.size.height-88-34);
+        } else {
+            _webView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame),[UIScreen mainScreen].bounds.size.height-64);
+        }
     }
     return _webView;
 }

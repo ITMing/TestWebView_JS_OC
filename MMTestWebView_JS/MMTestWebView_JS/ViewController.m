@@ -34,6 +34,8 @@
 {
     WebViewController *webVC = [[WebViewController alloc] init];
     webVC.hidesBottomBarWhenPushed = YES;
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html"];
+    webVC.url = url;
     [self.navigationController pushViewController:webVC animated:YES];
 }
 

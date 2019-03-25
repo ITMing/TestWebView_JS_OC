@@ -3,6 +3,16 @@
 <head lang="en">
     <meta charset="UTF-8">
         <title>mmzhao测试JS-OC-JS</title>
+
+<script type="text/javascript">
+
+	function outPutBridgeValue(){
+		var params = JSON.stringify({"desc": "mmzhao测试JS-OC-JS，传递原生bridge值，以及需要的参数"});
+        mmzhao.outPutValue(2019,params);
+    }
+
+</script>>
+
 </head>
 <body>
     <div style="margin-top: 100px">
@@ -14,7 +24,17 @@
         <input type="button" value="Share" onclick="callShare()">
     </div>
 
+    <div style="margin-top: 20px">
+    	<h1>添加第二种方式</h1>
+
+    	<input type="button" value="输出交互值" onclick="outPutBridgeValue()"> 
+
+    </div>
+
 <script>
+
+    
+
     var callShare = function() {
         var shareInfo = JSON.stringify({"title": "标题", "desc": "内容", "shareUrl": "http://www.baidu.com",
         "shareIco":"https://github.com/"});
