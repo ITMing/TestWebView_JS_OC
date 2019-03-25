@@ -1,0 +1,20 @@
+
+## Build generated
+build/
+DerivedData
+
+
+
+
+*.zip
+*.xcuserstate
+*.xcbkptlist
+*.xcworkspacedata
+*.xcscheme
+
+#### add 
+*.DS_Store
+
+xcschememanagement.plist
+IDEWorkspaceChecks.plist
+
