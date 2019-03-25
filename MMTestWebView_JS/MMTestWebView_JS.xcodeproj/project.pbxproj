@@ -12,9 +12,10 @@
 		764F1FFC22421BB500F9BCD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 764F1FFB22421BB500F9BCD9 /* Assets.xcassets */; };
 		764F1FFF22421BB500F9BCD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 764F1FFD22421BB500F9BCD9 /* LaunchScreen.storyboard */; };
 		764F200222421BB500F9BCD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 764F200122421BB500F9BCD9 /* main.m */; };
-		764F200922421C9D00F9BCD9 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 764F200822421C9D00F9BCD9 /* index.html */; };
 		764F200C22421D0000F9BCD9 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764F200B22421D0000F9BCD9 /* WebViewController.m */; };
 		764F200F2242211700F9BCD9 /* MMJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 764F200E2242211700F9BCD9 /* MMJSBridge.m */; };
+		76855F5C2248B5AD009C3159 /* demo.html in Resources */ = {isa = PBXBuildFile; fileRef = 76855F5B2248B5AD009C3159 /* demo.html */; };
+		76855F5E2248B5CA009C3159 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 76855F5D2248B5CA009C3159 /* index.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,11 +28,12 @@
 		764F1FFE22421BB500F9BCD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		764F200022421BB500F9BCD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		764F200122421BB500F9BCD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		764F200822421C9D00F9BCD9 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		764F200A22421D0000F9BCD9 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		764F200B22421D0000F9BCD9 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		764F200D2242211700F9BCD9 /* MMJSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMJSBridge.h; sourceTree = "<group>"; };
 		764F200E2242211700F9BCD9 /* MMJSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMJSBridge.m; sourceTree = "<group>"; };
+		76855F5B2248B5AD009C3159 /* demo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = demo.html; sourceTree = "<group>"; };
+		76855F5D2248B5CA009C3159 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,13 +74,22 @@
 				764F200B22421D0000F9BCD9 /* WebViewController.m */,
 				764F200D2242211700F9BCD9 /* MMJSBridge.h */,
 				764F200E2242211700F9BCD9 /* MMJSBridge.m */,
-				764F200822421C9D00F9BCD9 /* index.html */,
+				76855F5A2248B5AD009C3159 /* H5Page */,
 				764F1FFB22421BB500F9BCD9 /* Assets.xcassets */,
 				764F1FFD22421BB500F9BCD9 /* LaunchScreen.storyboard */,
 				764F200022421BB500F9BCD9 /* Info.plist */,
 				764F200122421BB500F9BCD9 /* main.m */,
 			);
 			path = MMTestWebView_JS;
+			sourceTree = "<group>";
+		};
+		76855F5A2248B5AD009C3159 /* H5Page */ = {
+			isa = PBXGroup;
+			children = (
+				76855F5B2248B5AD009C3159 /* demo.html */,
+				76855F5D2248B5CA009C3159 /* index.html */,
+			);
+			path = H5Page;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +150,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				764F1FFF22421BB500F9BCD9 /* LaunchScreen.storyboard in Resources */,
-				764F200922421C9D00F9BCD9 /* index.html in Resources */,
+				76855F5E2248B5CA009C3159 /* index.html in Resources */,
+				76855F5C2248B5AD009C3159 /* demo.html in Resources */,
 				764F1FFC22421BB500F9BCD9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
