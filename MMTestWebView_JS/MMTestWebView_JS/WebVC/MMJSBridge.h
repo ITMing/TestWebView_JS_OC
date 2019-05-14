@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @protocol MMJSExport <JSExport>
 
 - (void)callCamera;
@@ -28,4 +26,3 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NS_ASSUME_NONNULL_END
