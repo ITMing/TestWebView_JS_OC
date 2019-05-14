@@ -11,7 +11,16 @@
         mmzhao.outPutValue(2019,params);
     }
 
-</script>>
+//who can tell me the difference between single quotes and double quotes? they can print my name. 
+    function testJSCallOCNative1() {
+    	mmzhao.callNative(2019,'mmzhao');
+    }
+
+    function testJSCallOCNative2() {
+    	mmzhao.callNative(2019,"mmzhao");
+    }
+
+</script>
 
 </head>
 <body>
@@ -32,9 +41,6 @@
     </div>
 
 <script>
-
-    
-
     var callShare = function() {
         var shareInfo = JSON.stringify({"title": "标题", "desc": "内容", "shareUrl": "http://www.baidu.com",
         "shareIco":"https://github.com/"});

@@ -29,7 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationController.navigationBar.translucent = NO;
     [self.view addSubview:self.webView];
     
     [self reloadRequest];
@@ -80,13 +80,9 @@
 - (UIWebView *)webView
 {
     if (!_webView) {
-        _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), [UIScreen mainScreen].bounds.size.height-64)];
+        _webView.scrollView.bounces = NO;
         _webView.delegate = self;
-        if (@available(iOS 11.0, *)) {
-            _webView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame),[UIScreen mainScreen].bounds.size.height-88-34);
-        } else {
-            _webView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame),[UIScreen mainScreen].bounds.size.height-64);
-        }
     }
     return _webView;
 }
